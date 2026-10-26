@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروشیار | فروش آسان‌تر</title>
+  <style>
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      margin: 0;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+    header {
+      background: #155eef;
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+    }
+    header h1 { font-size: 34px; }
+    main {
+      max-width: 700px;
+      margin: 25px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 22px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px #00000010;
+    }
+    input, textarea, button {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 13px;
+      margin-top: 10px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 15px;
+    }
+    input, textarea { border: 1px solid #d1d5db; }
+    button {
+      background: #155eef;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .product {
+      border-bottom: 1px solid #eee;
+      padding: 12px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>فروشیار</h1>
+    <p>راه ساده‌تر برای معرفی و فروش محصولات شما</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>محصولات فروشگاه</h2>
+      <div id="products">
+        <div class="product">
+          <strong>محصول نمونه ۱</strong>
+          <p>توضیحات محصول را اینجا بنویسید.</p>
+          <p>قیمت: قابل استعلام</p>
+        </div>
+        <div class="product">
+          <strong>محصول نمونه ۲</strong>
+          <p>توضیحات محصول را اینجا بنویسید.</p>
+          <p>قیمت: قابل استعلام</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>ثبت درخواست فروش</h2>
+      <form id="requestForm">
+        <input id="customer" placeholder="نام شما" required>
+        <input id="phone" type="tel" placeholder="شماره تماس" required>
+        <textarea id="details" placeholder="چه محصولی می‌خواهید بفروشید؟" required></textarea>
+        <button type="submit">ثبت درخواست</button>
+      </form>
+      <p id="message"></p>
+    </section>
+  </main>
+
+  <footer>فروشیار | نسخه آزمایشی</footer>
+
+  <script>
+    document.getElementById("requestForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const customer = document.getElementById("customer").value;
+      const phone = document.getElementById("phone").value;
+      const details = document.getElementById("details").value;
+
+      const text = "درخواست جدید فروشیار\nنام: " + customer +
+        "\nتلفن: " + phone + "\nتوضیحات: " + details;
+
+      const url = "https://wa.me/?text=" + encodeURIComponent(text);
+      document.getElementById("message").innerHTML =
+        '<a href="' + url + '" target="_blank">ارسال درخواست در واتساپ</a>';
+    });
+  </script>
+</body>
+</html>
